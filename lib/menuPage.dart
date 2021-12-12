@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MenuScreen extends StatefulWidget{
   @override
@@ -22,7 +23,7 @@ class _MenuScreenState extends State<MenuScreen>{
       width: double.infinity,
       child: ElevatedButton(
         style: raisedButtonStyle,
-        onPressed: ()=>print("One of these buttons are pressed"),//Navigator.push(context,new MaterialPageRoute(builder: (context)=>new FormScreen())),
+        onPressed: _launchURLBrowser,//Navigator.push(context,new MaterialPageRoute(builder: (context)=>new FormScreen())),
         child: Text(
           'Color-blindness test',
           style: TextStyle(
@@ -147,5 +148,22 @@ class _MenuScreenState extends State<MenuScreen>{
         ),
       ),
     );
+  }
+}
+_launchURLApp() async {
+  const url = 'https://enchroma.com/pages/color-blindness-test';
+  if (await canLaunch(url)) {
+    await launch(url, forceSafariVC: true, forceWebView: true);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+_launchURLBrowser() async {
+  const url = 'https://enchroma.com/pages/color-blindness-test';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
