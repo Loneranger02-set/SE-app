@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'menuToObjectDetection.dart';
 
 class MenuScreen extends StatefulWidget{
   @override
@@ -23,7 +24,7 @@ class _MenuScreenState extends State<MenuScreen>{
       width: double.infinity,
       child: ElevatedButton(
         style: raisedButtonStyle,
-        onPressed: _launchURLBrowser,//Navigator.push(context,new MaterialPageRoute(builder: (context)=>new FormScreen())),
+        onPressed: _launchURLApp,//Navigator.push(context,new MaterialPageRoute(builder: (context)=>new FormScreen())),
         child: Text(
           'Color-blindness test',
           style: TextStyle(
@@ -79,7 +80,7 @@ class _MenuScreenState extends State<MenuScreen>{
       width: double.infinity,
       child: ElevatedButton(
         style: raisedButtonStyle,
-        onPressed: ()=>print("Ok.. this is last"),//Navigator.push(context,new MaterialPageRoute(builder: (context)=>new FormScreen())),
+        onPressed:()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new MenuScreenToObjDetec())),
         child: Text(
           'Object detection',
           style: TextStyle(
@@ -153,7 +154,7 @@ class _MenuScreenState extends State<MenuScreen>{
 _launchURLApp() async {
   const url = 'https://enchroma.com/pages/color-blindness-test';
   if (await canLaunch(url)) {
-    await launch(url, forceSafariVC: true, forceWebView: true);
+    await launch(url, forceSafariVC: true, forceWebView: true,enableJavaScript: true);
   } else {
     throw 'Could not launch $url';
   }

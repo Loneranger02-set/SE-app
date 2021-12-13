@@ -135,6 +135,7 @@ class _StaticImageState extends State<StaticImage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Object Detector"),
+        backgroundColor: Colors.red,
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -143,12 +144,14 @@ class _StaticImageState extends State<StaticImage> {
             heroTag: "Fltbtn2",
             child: Icon(Icons.camera_alt),
             onPressed: getImageFromCamera,
+            backgroundColor: Colors.red,
           ),
           SizedBox(width: 10,),
           FloatingActionButton(
             heroTag: "Fltbtn1",
             child: Icon(Icons.photo),
             onPressed: getImageFromGallery,
+            backgroundColor: Colors.red,
           ),
         ],
       ),

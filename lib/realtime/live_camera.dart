@@ -48,6 +48,7 @@ class _LiveFeedState extends State<LiveFeed> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Real Time Object Detection"),
+        backgroundColor: Colors.red,
       ),
       body: Stack(
         children: <Widget>[
