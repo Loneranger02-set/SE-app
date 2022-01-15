@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-// import 'package:bat_roost/ProfilePage.dart';
+import 'ProfilePage.dart';
+import 'SignUpScreen.dart';
 // import 'package:bat_roost/constants/base_constants.dart';
 // import 'package:bat_roost/constants/routing_constants.dart';
-// import 'package:bat_roost/misc_functions/AuthFunctions.dart';
+import 'AuthFunctions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +12,6 @@ import 'menuPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-//import 'package:bat_roost/misc_functions/custom_snackbar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
@@ -144,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
         onPressed: printText(),//_launchURLBrowser,
         //padding: EdgeInsets.only(right: 0),
         child: Text(
-          'Forgot Password?',
+          '',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
@@ -184,7 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
-        onPressed:()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new MenuScreen())),/*() {
+        onPressed:/*()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new MenuScreen())),*/() {
           if (validateAndSave()) {
             setState(() {
               isApiCallProcess = true;
@@ -200,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     User.fetchAndAuthUser();
                   });
 //                  secureStorage.write(key:'token', value: value.token);
-                  Navigator.pushReplacementNamed(context, MenuScreenRoute);
+                  Navigator.push(context,new MaterialPageRoute(builder: (context)=>new MenuScreen()));
                 } else {
                   final snackBar = buildErrorSnackBtn(value.error);
                   ScaffoldMessenger.of(context).showSnackBar((snackBar));
@@ -209,7 +209,7 @@ class _LoginScreenState extends State<LoginScreen> {
             });
             print(loginRequestModel.toJson());
           }
-        },*/
+        },
         style: ElevatedButton.styleFrom(
           elevation: 5,
           onPrimary: Colors.black12,
@@ -231,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildSignUpBtn() {
     return GestureDetector(
-      onTap: printText(),//() => Navigator.pushNamed(context, SignUpRoute),
+      onTap:()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new SignUpScreen())),
       child: RichText(
         text: TextSpan(children: [
           TextSpan(
@@ -330,30 +330,30 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-// class APIservice {
-//   Future<LoginResponseModel> login(LoginRequestModel loginRequestModel) async {
-// //    String url = "damp-dusk-81388.herokuapp.com";
-//     try {
-//       final response = await http.post(Uri.http(HOST_NAME, "/api/v1/login/"),
-//           body: loginRequestModel.toJson()).timeout(
-//           const Duration(seconds: 10));
-//       print(response.statusCode);
-//       print(response.body);
-//       if (response.statusCode == 200 || response.statusCode >= 400) {
-//         return LoginResponseModel.fromJson(
-//             json.decode(response.body), response.statusCode);
-//       } else {
-//         return LoginResponseModel(token: "", error: "Failed to load data");
-//       }
-//     } on TimeoutException catch (e){
-//       return LoginResponseModel(token: "", error: "Connection Timed out");
-//     } on SocketException catch (e) {
-//       return LoginResponseModel(token: "", error: "Connection Timed out");
-//     } catch(e) {
-//       return LoginResponseModel(token: "", error: e.toString());
-//     }
-//   }
-// }
+class APIservice {
+  Future<LoginResponseModel> login(LoginRequestModel loginRequestModel) async {
+    String HOST_NAME = "django-project-endpoint.herokuapp.com";
+    try {
+      final response = await http.post(Uri.http(HOST_NAME, "/rest-auth/login/"),
+          body: loginRequestModel.toJson()).timeout(
+          const Duration(seconds: 10));
+      print(response.statusCode);
+      print(response.body);
+      if (response.statusCode == 200 || response.statusCode >= 400) {
+        return LoginResponseModel.fromJson(
+            json.decode(response.body), response.statusCode);
+      } else {
+        return LoginResponseModel(token: "", error: "Failed to load data");
+      }
+    } on TimeoutException catch (e){
+      return LoginResponseModel(token: "", error: "Connection Timed out");
+    } on SocketException catch (e) {
+      return LoginResponseModel(token: "", error: "Connection Timed out");
+    } catch(e) {
+      return LoginResponseModel(token: "", error: e.toString());
+    }
+  }
+}
 
 class LoginResponseModel {
   final String token;
@@ -383,13 +383,16 @@ class LoginResponseModel {
 class LoginRequestModel {
   String email;
   String password;
+  String username;
   LoginRequestModel({
     this.email,
     this.password,
+    this.username
   });
   Map<String, dynamic> toJson() {
     Map<String, dynamic> map = {
-      'email': email.trim(),
+      //'email': email.trim(),
+      'username':email.trim(),
       'password': password.trim(),
     };
     return map;
