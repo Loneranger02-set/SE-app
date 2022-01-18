@@ -229,7 +229,29 @@ class _ColorPickerWidgetState extends State<colorRecogn> {
     currentKey = useSnapshot ? paintKey : imageKey;
     super.initState();
   }
-
+//   openFile(filepath) async
+//   {
+//     File f = new File(filepath);
+//     print("CSV to List");
+//     final input = f.openRead();
+//     final fields = await input.transform(utf8.decoder).transform(new CsvToListConverter()).toList();
+//     print(fields);
+//   }
+//   openFile('assets/colors.csv');
+  
+  
+  
+//   def getColorName(R,G,B):
+//     minimum = 10000
+//     for i in range(len(csv)):
+//         d = abs(R- int(csv.loc[i,"R"])) + abs(G- int(csv.loc[i,"G"]))+ abs(B- int(csv.loc[i,"B"]))
+//         if(d<=minimum):
+//             minimum = d
+//             cname = csv.loc[i,"color_name"]
+//     return cname
+// This is in python. To be converted to dart
+  
+  
   @override
   Widget build(BuildContext context) {
     final String title = useSnapshot ? "snapshot" : "basic";
