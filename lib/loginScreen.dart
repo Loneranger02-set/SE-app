@@ -74,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
             onSaved: (input) => loginRequestModel.email = input,
+            key: Key('emailField'),
             //validator: (input)=>!input.contains("@")?"Enter valid Email Id":null,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -94,6 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
       children: <Widget>[
         Text(
           'Password',
+
           style: TextStyle(
               color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
         ),
@@ -110,6 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 60,
           child: TextFormField(
             keyboardType: TextInputType.visiblePassword,
+            key: Key('pwdField'),
             obscureText: hidePassword,
             onSaved: (input) => loginRequestModel.password = input,
             //validator: (input)=>input.length<8?"Password should be more than 8 characters":null,
@@ -184,6 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
       padding: EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
+        key:Key("LoginButton"),
         onPressed:/*()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new MenuScreen())),*/() {
           if (validateAndSave()) {
             setState(() {
@@ -309,16 +313,17 @@ class _LoginScreenState extends State<LoginScreen> {
     final form = globalFormKey.currentState;
     if (form.validate()) {
       form.save();
-      if (loginRequestModel.password.isEmpty) {
-        final snackBar = buildErrorSnackBtn("Password is Required !");
-        ScaffoldMessenger.of(context).showSnackBar((snackBar));
-        return false;
-      } else if (!loginRequestModel.email.contains("@")) {
+       if (!loginRequestModel.email.contains("@")) {
         final snackBar = buildErrorSnackBtn("Enter a valid email !");
         ScaffoldMessenger.of(context).showSnackBar((snackBar));
         return false;
       }
-      return true;
+      else if (loginRequestModel.password.isEmpty) {
+      final snackBar = buildErrorSnackBtn("Password is Required !");
+      ScaffoldMessenger.of(context).showSnackBar((snackBar));
+      return false;
+    }
+    return true;
     } else {
       return false;
     }
@@ -425,6 +430,7 @@ printText()
 SnackBar buildErrorSnackBtn(String str){
   return SnackBar(
     content: Text(str,
+        key: Key("error"),
         style: const TextStyle(
             fontSize:17,
             fontWeight: FontWeight.bold)
