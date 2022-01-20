@@ -26,6 +26,7 @@ dependencies:
   shared_preferences: ^2.0.6
   url_launcher: ^6.0.7
   image: ^3.0.1
+  csv: ^5.0.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,6 +63,7 @@ flutter:
     - assets/models/labels.txt
     - assets/images/wallpapersden.com_ken-kaneki-wings_2560x1080.jpg
     - assets/images/index.jpg
+    - #assets/colors.csv
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
