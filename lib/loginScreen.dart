@@ -235,6 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget buildSignUpBtn() {
     return GestureDetector(
+      key:Key("SignUpButton"),
       onTap:()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new SignUpScreen())),
       child: RichText(
         text: TextSpan(children: [

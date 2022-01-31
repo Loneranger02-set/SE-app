@@ -220,6 +220,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           height: 50,
           child: TextFormField(
             keyboardType: TextInputType.emailAddress,
+            key:Key("emailReg"),
             onSaved: (input) => signupRequestModel.email = input,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
@@ -251,6 +252,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           height: 50,
           child: TextFormField(
             keyboardType: TextInputType.visiblePassword,
+            key:Key("pwd1Reg"),
             obscureText: hidePassword1,
             onSaved: (input) => signupRequestModel.password1 = input,
             style: TextStyle(color: Colors.black),
@@ -294,6 +296,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           height: 50,
           child: TextFormField(
             keyboardType: TextInputType.visiblePassword,
+            key:Key("pwd2Reg"),
             obscureText: hidePassword2,
             onSaved: (input) => signupRequestModel.password2 = input,
             style: TextStyle(color: Colors.black),
@@ -324,6 +327,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
+      key:Key("signupReg"),
       child: ElevatedButton(
         onPressed: () {
           if (validateAndSave()) {
@@ -563,6 +567,7 @@ class SignUpRequestModel {
 SnackBar buildErrorSnackBtn(String str){
   return SnackBar(
     content: Text(str,
+        key:Key("errorReg"),
         style: const TextStyle(
             fontSize:17,
             fontWeight: FontWeight.bold)
