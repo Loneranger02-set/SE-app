@@ -208,6 +208,7 @@ import 'package:image/image.dart' as img;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class colorRecogn extends StatefulWidget {
   @override
@@ -219,9 +220,10 @@ class _ColorPickerWidgetState extends State<colorRecogn> {
   String imagePath = 'assets/images/index.jpg';
   GlobalKey imageKey = GlobalKey();
   GlobalKey paintKey = GlobalKey();
-
+  TextToSpeech tts = TextToSpeech();
   // CHANGE THIS FLAG TO TEST BASIC IMAGE, AND SNAPSHOT.
   bool useSnapshot = true;
+  String text='';
 
   // based on useSnapshot=true ? paintKey : imageKey ;
   // this key is used in this example to keep the code shorter.
@@ -236,7 +238,7 @@ class _ColorPickerWidgetState extends State<colorRecogn> {
     super.initState();
   }
 
-  
+
   @override
   Widget build(BuildContext context) {
     final String title = useSnapshot ? "snapshot" : "basic";
@@ -361,8 +363,10 @@ class _ColorPickerWidgetState extends State<colorRecogn> {
     int B=hexToRGB[hexval[14]]*16 + hexToRGB[hexval[15]];
     print('R, G, B : ${R},${G},${B}');
     colSel=rgbtoname(R,G,B);
+    text=colSel;
     print(colSel);
     _stateController.add(Color(hex));
+    tts.speak(text);
   }
 
   Future<void> loadImageBundleBytes() async {

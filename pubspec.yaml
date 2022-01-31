@@ -37,6 +37,7 @@ dependencies:
   camera: ^0.9.4+5
   flutter_secure_storage: ^5.0.2
   flutter_text_to_speech: ^3.0.7
+  text_to_speech: ^0.2.3
 
 
 dev_dependencies:
