@@ -4,7 +4,8 @@ import 'package:object_detection/realtime/bounding_box.dart';
 import 'package:object_detection/realtime/camera.dart';
 import 'dart:math' as math;
 import 'package:tflite/tflite.dart';
-import 'dart:html';
+
+
 class LiveFeed extends StatefulWidget {
   final List<CameraDescription> cameras;
   LiveFeed(this.cameras);

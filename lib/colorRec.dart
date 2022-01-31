@@ -427,6 +427,7 @@ class _ColorPickerWidgetState extends State<colorRecogn> {
     );
     if (pickedFile != null) {
       File imageFile = File(pickedFile.path);
+      imagePath=pickedFile.path;
     }
 
   }
