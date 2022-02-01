@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
-import 'package:flutter_text_to_speech/flutter_text_to_speech.dart';
 
 class StaticImage extends StatefulWidget {
 
@@ -10,13 +9,15 @@ class StaticImage extends StatefulWidget {
   _StaticImageState createState() => _StaticImageState();
 }
 
+String obj=".....";
+double m=0;
+
 class _StaticImageState extends State<StaticImage> {
   File _image;
   List _recognitions;
   bool _busy;
   double _imageWidth, _imageHeight;
-  VoiceController _voiceController;
-  String text="None";
+
 
   final picker = ImagePicker();
 
@@ -53,9 +54,10 @@ class _StaticImageState extends State<StaticImage> {
   }
 
   @override
-  void initState() {
-    _voiceController = FlutterTextToSpeech.instance.voiceController();
+  void initState() { 
     super.initState();
+    obj=".....";
+    m=0;
     _busy = true;
     loadTfModel().then((val) {{
       setState(() {
@@ -63,19 +65,25 @@ class _StaticImageState extends State<StaticImage> {
       });
     }});
   }
-  _playVoice() {
-    _voiceController.init().then((_) {
-      _voiceController.speak(
-        text,
-        VoiceControllerOptions(),
-      );
-    });
-  }
   // display the bounding boxes over the detected objects
   List<Widget> renderBoxes(Size screen) {
     if (_recognitions == null) return [];
     if (_imageWidth == null || _imageHeight == null) return [];
+    //Checking max
+    //print(_recognitions[0]["detectedClass"]);
+    m=0;
+    obj=".....";
+    for(int i=0;i<_recognitions.length;i++)
+      {
+        if(_recognitions[i]['confidenceInClass']>m)
+          {
+            m=_recognitions[i]['confidenceInClass'];
+            obj=_recognitions[i]["detectedClass"];
+          }
+      }
 
+    print(obj);
+    ////////
     double factorX = screen.width;
     double factorY = _imageHeight / _imageHeight * screen.width;
 
@@ -131,10 +139,21 @@ class _StaticImageState extends State<StaticImage> {
         Container(
           child:Image.file(_image)
         ),
-      )
+
+      ),
+
     );
 
-    stackChildren.addAll(renderBoxes(size));
+
+
+    List<Widget> temp=[];
+    temp=renderBoxes(size);
+
+
+    // _recognitions.forEach((item){
+    //   print(item["detectedClass"]);
+    // });
+    stackChildren.addAll(temp);
 
     if (_busy) {
       stackChildren.add(
@@ -152,6 +171,19 @@ class _StaticImageState extends State<StaticImage> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
+          Container(
+            height: 50,
+            width:200,
+            // alignment: Alignment.topLeft,
+            child: Text(
+              '${obj}',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30
+              ),
+            ),
+          ),
           FloatingActionButton(
             heroTag: "Fltbtn2",
             child: Icon(Icons.camera_alt),
@@ -165,9 +197,12 @@ class _StaticImageState extends State<StaticImage> {
             onPressed: getImageFromGallery,
             backgroundColor: Colors.red,
           ),
+
+
         ],
       ),
-      body: Container(
+      body:
+      Container(
         alignment: Alignment.center,
         child:Stack(
         children: stackChildren,
