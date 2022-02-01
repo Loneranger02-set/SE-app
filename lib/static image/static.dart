@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
+import 'package:text_to_speech/text_to_speech.dart';
 
 class StaticImage extends StatefulWidget {
 
@@ -17,6 +18,7 @@ class _StaticImageState extends State<StaticImage> {
   List _recognitions;
   bool _busy;
   double _imageWidth, _imageHeight;
+  TextToSpeech tts = TextToSpeech();
 
 
   final picker = ImagePicker();
@@ -81,6 +83,7 @@ class _StaticImageState extends State<StaticImage> {
             obj=_recognitions[i]["detectedClass"];
           }
       }
+    tts.speak(obj);
 
     print(obj);
     ////////
