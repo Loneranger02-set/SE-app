@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'menuToObjectDetection.dart';
 import 'colorRec.dart';
-
+import 'newcolorrec.dart';
 class MenuScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState()=>_MenuScreenState();
@@ -53,7 +53,7 @@ class _MenuScreenState extends State<MenuScreen>{
       width: double.infinity,
       child: ElevatedButton(
         style: raisedButtonStyle,
-        onPressed: ()=>Navigator.push(context,new MaterialPageRoute(builder: (context)=>new colorRecogn())),
+        onPressed: ()=>Navigator.push(context,new MaterialPageRoute(builder: (context)=>new newcolorrec())),
         child: Text(
           'Color detection',
           style: TextStyle(

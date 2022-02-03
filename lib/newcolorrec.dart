@@ -25,7 +25,7 @@ class _StaticImageState extends State<newcolorrec> {
   List _recognitions;
   bool _busy;
   double _imageWidth, _imageHeight;
-  String imagePath='';
+  String imagePath='assets/images/index.jpg';
   File _image=File('assets/images/index.jpg');
   GlobalKey imageKey = GlobalKey();
   GlobalKey paintKey = GlobalKey();
@@ -160,9 +160,15 @@ class _StaticImageState extends State<newcolorrec> {
           ),
         )
             : // if not null then
-        Container(
+        Stack(
+          children : <Widget>
+          [
+            RepaintBoundary(
+            key: paintKey,
           child: GestureDetector(
             onPanDown: (details) {
+              print("HELLLLO .................................................");
+              print(details.globalPosition);
               searchPixel(details.globalPosition);
             },
             onPanUpdate: (details) {
@@ -170,8 +176,9 @@ class _StaticImageState extends State<newcolorrec> {
             },
             child:Image.file(_image)
             ),
-          ),
+          )],
         ),
+    ),
     );
 
 
@@ -197,7 +204,7 @@ class _StaticImageState extends State<newcolorrec> {
             width:200,
             // alignment: Alignment.topLeft,
             child: Text(
-              '${obj}',
+              '${colSel}',
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black,
@@ -234,7 +241,7 @@ class _StaticImageState extends State<newcolorrec> {
   // gets image from camera and runs detectObject
   Future getImageFromCamera() async {
     final pickedFile = await picker.getImage(source: ImageSource.camera);
-
+    photo=null;
     setState(() {
       if(pickedFile != null) {
         _image = File(pickedFile.path);
@@ -248,6 +255,7 @@ class _StaticImageState extends State<newcolorrec> {
   // gets image from gallery and runs detectObject
   Future getImageFromGallery() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    photo=null;
     setState(() {
       if(pickedFile != null) {
         _image = File(pickedFile.path);
@@ -260,13 +268,16 @@ class _StaticImageState extends State<newcolorrec> {
   }
 
   void searchPixel(Offset globalPosition) async {
+   // print(imagePath);
     if (photo == null) {
       await (useSnapshot ? loadSnapshotBytes() : loadImageBundleBytes());
     }
+    print("SECOND TEST zzzzzzzzzzzzzzzzzzzzzzzzzz");
     _calculatePixel(globalPosition);
   }
 
   void _calculatePixel(Offset globalPosition) {
+
     RenderBox box = currentKey.currentContext.findRenderObject();
     Offset localPosition = box.globalToLocal(globalPosition);
 
@@ -302,6 +313,7 @@ class _StaticImageState extends State<newcolorrec> {
   }
 
   Future<void> loadSnapshotBytes() async {
+    //print("ENTERED load");
     RenderRepaintBoundary boxPaint = paintKey.currentContext.findRenderObject();
     ui.Image capture = await boxPaint.toImage();
     ByteData imageBytes =
