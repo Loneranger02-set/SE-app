@@ -1,10 +1,14 @@
 import 'dart:core';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tflite/tflite.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 import 'package:image/image.dart' as img;
+import 'dart:typed_data';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:ui' as ui;
 
 class newcolorrec extends StatefulWidget {
 
@@ -13,7 +17,7 @@ class newcolorrec extends StatefulWidget {
 }
 
 String obj=".....";
-String colsel=".....";
+String colSel=".....";
 double m=0;
 
 class _StaticImageState extends State<newcolorrec> {
@@ -21,7 +25,7 @@ class _StaticImageState extends State<newcolorrec> {
   List _recognitions;
   bool _busy;
   double _imageWidth, _imageHeight;
-
+  String imagePath='';
   File _image=File('assets/images/index.jpg');
   GlobalKey imageKey = GlobalKey();
   GlobalKey paintKey = GlobalKey();
@@ -35,7 +39,6 @@ class _StaticImageState extends State<newcolorrec> {
   GlobalKey currentKey;
 
   img.Image photo;
-
 
   final picker = ImagePicker();
 
@@ -73,6 +76,7 @@ class _StaticImageState extends State<newcolorrec> {
 
   @override
   void initState() {
+    currentKey = useSnapshot ? paintKey : imageKey;
     super.initState();
     obj=".....";
     m=0;
@@ -91,7 +95,8 @@ class _StaticImageState extends State<newcolorrec> {
     //print(_recognitions[0]["detectedClass"]);
     m=0;
     obj=".....";
-    for(int i=0;i<_recognitions.length;i++)
+    int i;
+    for(i=0;i<_recognitions.length;i++)
     {
       if(_recognitions[i]['confidenceInClass']>m)
       {
@@ -171,15 +176,6 @@ class _StaticImageState extends State<newcolorrec> {
 
 
 
-    List<Widget> temp=[];
-    temp=renderBoxes(size);
-
-
-    // _recognitions.forEach((item){
-    //   print(item["detectedClass"]);
-    // });
-    stackChildren.addAll(temp);
-
     if (_busy) {
       stackChildren.add(
           Center(
@@ -242,11 +238,12 @@ class _StaticImageState extends State<newcolorrec> {
     setState(() {
       if(pickedFile != null) {
         _image = File(pickedFile.path);
+        imagePath=pickedFile.path;
       } else {
         print("No image Selected");
       }
     });
-    detectObject(_image);
+    //detectObject(_image);
   }
   // gets image from gallery and runs detectObject
   Future getImageFromGallery() async {
@@ -254,11 +251,12 @@ class _StaticImageState extends State<newcolorrec> {
     setState(() {
       if(pickedFile != null) {
         _image = File(pickedFile.path);
+        imagePath=pickedFile.path;
       } else {
         print("No image Selected");
       }
     });
-    detectObject(_image);
+    //detectObject(_image);
   }
 
   void searchPixel(Offset globalPosition) async {
@@ -320,7 +318,7 @@ class _StaticImageState extends State<newcolorrec> {
 }
 
 
-/ image lib uses uses KML color format, convert #AABBGGRR to regular #AARRGGBB
+//image lib uses uses KML color format, convert #AABBGGRR to regular #AARRGGBB
 int abgrToArgb(int argbColor) {
   int r = (argbColor >> 16) & 0xFF;
   int b = argbColor & 0xFF;
