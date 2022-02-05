@@ -81,6 +81,7 @@ class _StaticImageState extends State<newcolorrec> {
     obj=".....";
     m=0;
     _busy = true;
+    colSel=".....";
     loadTfModel().then((val) {{
       setState(() {
         _busy = false;
@@ -170,9 +171,15 @@ class _StaticImageState extends State<newcolorrec> {
               print("HELLLLO .................................................");
               print(details.globalPosition);
               searchPixel(details.globalPosition);
+              setState(() {
+                colSel=colSel;
+              });
             },
             onPanUpdate: (details) {
               searchPixel(details.globalPosition);
+              setState(() {
+                colSel=colSel;
+              });
             },
             child:Image.file(_image)
             ),
