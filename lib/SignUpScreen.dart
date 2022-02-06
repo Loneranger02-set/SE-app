@@ -37,172 +37,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  // Widget buildFirstName() {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: <Widget>[
-  //       SizedBox(height: 10),
-  //       Container(
-  //         alignment: Alignment.centerLeft,
-  //         decoration: BoxDecoration(
-  //             color: Colors.white,
-  //             borderRadius: BorderRadius.circular(10),
-  //             boxShadow: [
-  //               BoxShadow(
-  //                   color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-  //             ]),
-  //         height: 50,
-  //         child: TextFormField(
-  //           keyboardType: TextInputType.name,
-  //           onSaved: (input) => signupRequestModel.firstName = input,
-  //           style: TextStyle(color: Colors.black),
-  //           decoration: InputDecoration(
-  //               border: InputBorder.none,
-  //               contentPadding: EdgeInsets.only(top: 14),
-  //               prefixIcon: Icon(Icons.person, color: Colors.black26),
-  //               hintText: 'First name',
-  //               hintStyle: TextStyle(color: Colors.black38)),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
-  //
-  // Widget buildLastName() {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: <Widget>[
-  //       SizedBox(height: 10),
-  //       Container(
-  //         alignment: Alignment.centerLeft,
-  //         decoration: BoxDecoration(
-  //             color: Colors.white,
-  //             borderRadius: BorderRadius.circular(10),
-  //             boxShadow: [
-  //               BoxShadow(
-  //                   color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-  //             ]),
-  //         height: 50,
-  //         child: TextFormField(
-  //           keyboardType: TextInputType.name,
-  //           onSaved: (input) => signupRequestModel.lastName = input,
-  //           style: TextStyle(color: Colors.black),
-  //           decoration: InputDecoration(
-  //               border: InputBorder.none,
-  //               contentPadding: EdgeInsets.only(top: 14),
-  //               prefixIcon: Icon(Icons.person, color: Colors.black26),
-  //               hintText: 'Last name',
-  //               hintStyle: TextStyle(color: Colors.black38)),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
-  //
-  // Widget buildContactNo() {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: <Widget>[
-  //       SizedBox(height: 10),
-  //       Container(
-  //         alignment: Alignment.centerLeft,
-  //         decoration: BoxDecoration(
-  //             color: Colors.white,
-  //             borderRadius: BorderRadius.circular(10),
-  //             boxShadow: [
-  //               BoxShadow(
-  //                   color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-  //             ]),
-  //         height: 50,
-  //         child: TextFormField(
-  //           keyboardType: TextInputType.number,
-  //           onSaved: (input) => signupRequestModel.contactNo = input,
-  //           style: TextStyle(color: Colors.black),
-  //           decoration: InputDecoration(
-  //               border: InputBorder.none,
-  //               contentPadding: EdgeInsets.only(top: 14),
-  //               prefixIcon: Icon(Icons.phone, color: Colors.black26),
-  //               hintText: 'Contact Info',
-  //               hintStyle: TextStyle(color: Colors.black38)),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
-  //
-  // Widget buildLocality() {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: <Widget>[
-  //       SizedBox(height: 10),
-  //       Container(
-  //         alignment: Alignment.centerLeft,
-  //         decoration: BoxDecoration(
-  //             color: Colors.white,
-  //             borderRadius: BorderRadius.circular(10),
-  //             boxShadow: [
-  //               BoxShadow(
-  //                   color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-  //             ]),
-  //         height: 50,
-  //         child: TextFormField(
-  //           keyboardType: TextInputType.text,
-  //           onSaved: (input) => signupRequestModel.locality = input,
-  //           style: TextStyle(color: Colors.black),
-  //           decoration: InputDecoration(
-  //               border: InputBorder.none,
-  //               contentPadding: EdgeInsets.only(top: 14),
-  //               prefixIcon: Icon(Icons.house, color: Colors.black26),
-  //               hintText: 'Enter your locality',
-  //               hintStyle: TextStyle(color: Colors.black38)),
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
-
-//  Widget buildUsername(){
-//    return Column(
-//      crossAxisAlignment: CrossAxisAlignment.start,
-//      children:<Widget> [
-//        SizedBox(height:10),
-//        Container(
-//          alignment: Alignment.centerLeft,
-//          decoration: BoxDecoration(
-//              color: Colors.white,
-//              borderRadius: BorderRadius.circular(10),
-//              boxShadow: [
-//                BoxShadow(
-//                    color: Colors.black26,
-//                    blurRadius: 6,
-//                    offset:Offset(0,2)
-//                )
-//              ]
-//          ),
-//          height: 50,
-//          child: TextFormField(
-//            keyboardType: TextInputType.name,
-//            onSaved:(input)=> signupRequestModel.username=input,
-//            style: TextStyle(
-//                color: Colors.black
-//            ),
-//            decoration: InputDecoration(
-//                border:InputBorder.none,
-//                contentPadding: EdgeInsets.only(top:14),
-//                prefixIcon: Icon(
-//                    Icons.person,
-//                    color: Colors.black26
-//                ),
-//                hintText: 'Username',
-//                hintStyle: TextStyle(
-//                    color: Colors.black38
-//                )
-//            ),
-//          ),
-//        )
-//      ],
-//    );
-//  }
   Widget buildEmail() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -366,7 +200,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Text(
           'SIGN UP',
           style: TextStyle(
-              color: Color(0xff5ac18e),
+              color: Color(0xddff0000),
               fontWeight: FontWeight.bold,
               fontSize: 18),
         ),
@@ -410,10 +244,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Color(0x665ac18e),
-                        Color(0x995ac18e),
-                        Color(0xcc5ac18e),
-                        Color(0xff5ac18e),
+                        Color(0x44ff0000),
+                        Color(0x66ff0000),
+                        Color(0x99ff0000),
+                        Color(0xccff0000),
                       ])),
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),

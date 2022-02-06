@@ -25,8 +25,8 @@ class _StaticImageState extends State<newcolorrec> {
   List _recognitions;
   bool _busy;
   double _imageWidth, _imageHeight;
-  String imagePath='assets/images/index.jpg';
-  File _image=File('assets/images/index.jpg');
+  String imagePath='';
+  File _image=null;
   GlobalKey imageKey = GlobalKey();
   GlobalKey paintKey = GlobalKey();
   TextToSpeech tts = TextToSpeech();
@@ -200,7 +200,7 @@ class _StaticImageState extends State<newcolorrec> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Object Detector"),
+        title: Text("Color Detector"),
         backgroundColor: Colors.red,
       ),
       floatingActionButton: Row(
@@ -215,7 +215,7 @@ class _StaticImageState extends State<newcolorrec> {
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 30
+                  fontSize: 25
               ),
             ),
           ),

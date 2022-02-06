@@ -1,213 +1,14 @@
-// import 'dart:js_util';
-// import 'package:image/image.dart' as img;
-// import 'package:flutter/material.dart';
-// class colorRecogn extends StatefulWidget {
-//   @override
-//   MyHomePageState createState() => new MyHomePageState();
-// }
-//
-// class MyHomePageState extends State<colorRecogn> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//         appBar: new AppBar(
-//           title: new Text('Popup Demo'),
-//         ),
-//         body: new MyWidget());
-//   }
-// }
-//
-// class MyWidget extends StatefulWidget {
-//   @override
-//   State<StatefulWidget> createState() {
-//     return new MyWidgetState();
-//   }
-// }
-//
-// class MyWidgetState extends State<MyWidget> {
-//   double posx = 100.0;
-//   double posy = 100.0;
-//
-//   void onTapDown(BuildContext context, TapDownDetails details) {
-//     print('${details.globalPosition}');
-//     print(img.pix)
-//     final RenderBox box = context.findRenderObject();
-//     final Offset localOffset = box.globalToLocal(details.globalPosition);
-//     setState(() {
-//       posx = localOffset.dx;
-//       posy = localOffset.dy;
-//     });
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return new GestureDetector(
-//       onTapDown: (TapDownDetails details) => onTapDown(context, details),
-//       child: new Stack(fit: StackFit.expand, children: <Widget>[
-//         // Hack to expand stack to fill all the space. There must be a better
-//         // way to do it.
-//         new Container(color: Colors.white),
-//         new Positioned(
-//           child: new Text('hello'),
-//           left: posx,
-//           top: posy,
-//         )
-//       ]),
-//     );
-//   }
-// }
-//
-
-
-
-
-
-
-
-
-// import 'dart:typed_data';
-//
-// import 'package:image/image.dart' as img;
-// import 'package:flutter/rendering.dart';
-// import 'package:object_detection/colorRec.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// class colorRecogn extends StatefulWidget {
-//   //static const routeName = '/';
-//
-//   @override
-//   _ColorDetectState createState() => _ColorDetectState();
-// }
-//
-// class _ColorDetectState extends State<colorRecogn> {
-//   final coverData =
-//       'https://www.bing.com/images/search?q=Cat&FORM=IQFRBA&id=D81EDCF0F54945B5EAE6B44C21D2B680AC55AB8C';
-//   img.Image photo;
-//
-//   void setImageBytes(imageBytes) {
-//     print("setImageBytes");
-//     List<int> values = imageBytes.buffer.asUint8List();
-//     photo = null;
-//     photo = img.decodeImage(values);
-//   }
-//
-//   // image lib uses uses KML color format, convert #AABBGGRR to regular #AARRGGBB
-//   int abgrToArgb(int argbColor) {
-//     print("abgrToArgb");
-//     int r = (argbColor >> 16) & 0xFF;
-//     int b = argbColor & 0xFF;
-//     return (argbColor & 0xFF00FF00) | (b << 16) | r;
-//   }
-//
-//   // FUNCTION
-//
-//   Future<Color> _getColor() async {
-//     print("_getColor");
-//     Uint8List data;
-//
-//     try{
-//       data =
-//           (await NetworkAssetBundle(
-//               Uri.parse(coverData)).load(coverData))
-//               .buffer
-//               .asUint8List();
-//     }
-//     catch(ex){
-//       print(ex.toString());
-//     }
-//
-//     print("setImageBytes....");
-//     setImageBytes(data);
-//
-// //FractionalOffset(1.0, 0.0); //represents the top right of the [Size].
-//     double px = 1.0;
-//     double py = 0.0;
-//
-//     int pixel32 = photo.getPixelSafe(px.toInt(), py.toInt());
-//     int hex = abgrToArgb(pixel32);
-//     print("Value of int: $hex ");
-//
-//     return Color(hex);
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     print("build");
-//
-//     return Scaffold(
-//       appBar: AppBar(),
-//       body: Column(
-//         children: <Widget>[
-//           Flexible(
-//             flex: 2,
-//             child: Container(
-//               decoration: BoxDecoration(
-//                 image: DecorationImage(
-//                   image: NetworkImage(coverData),
-//                   fit: BoxFit.cover,
-//                 ),
-//               ),
-//             ),
-//           ),
-//           Flexible(
-//             flex: 1,
-//             child:
-//
-//             FutureBuilder(
-//                 future: _getColor(),
-//                 builder: (_, AsyncSnapshot<Color> data){
-//                   if (data.connectionState==ConnectionState.done){
-//                     return Container(
-//                       color: data.data,
-//                     );
-//                   }
-//                   return CircularProgressIndicator();
-//                 }
-//             ),
-//           ),
-//           Spacer(),
-//           Padding(
-//             padding: const EdgeInsets.only(bottom: 8.0),
-//             child: Row(
-//               mainAxisAlignment: MainAxisAlignment.spaceAround,
-//               crossAxisAlignment: CrossAxisAlignment.center,
-//               children: <Widget>[
-//                 MaterialButton(
-//                   elevation: 5.0,
-//                   padding: EdgeInsets.all(15.0),
-//                   color: Colors.grey,
-//                   child: Text("Get Sizes"),
-//                   onPressed: null,
-//                 ),
-//                 MaterialButton(
-//                   elevation: 5.0,
-//                   color: Colors.grey,
-//                   padding: EdgeInsets.all(15.0),
-//                   child: Text("Get Positions"),
-//                   onPressed: _getColor,
-//                 )
-//               ],
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'dart:async';
 import 'dart:convert';
 //import 'dart:html';
 import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:image/image.dart' as img;
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:image_picker/image_picker.dart';
-import 'package:tflite/tflite.dart';
 import 'package:text_to_speech/text_to_speech.dart';
 
 class colorRecogn extends StatefulWidget {
@@ -389,30 +190,7 @@ class _ColorPickerWidgetState extends State<colorRecogn> {
     photo = null;
     photo = img.decodeImage(values);
   }
-  // Future getImageFromCamera() async {
-  //   final pickedFile = await picker.getImage(source: ImageSource.camera);
-  //
-  //   setState(() {
-  //     if(pickedFile != null) {
-  //       _image = File(pickedFile.path);
-  //     } else {
-  //       print("No image Selected");
-  //     }
-  //   });
-  //   detectObject(_image);
-  // }
-  // gets image from gallery and runs detectObject
-  // Future getImageFromGallery() async {
-  //   final pickedFile = await picker.getImage(source: ImageSource.gallery);
-  //   setState(() {
-  //     if(pickedFile != null) {
-  //       _image = File(pickedFile.path);
-  //     } else {
-  //       print("No image Selected");
-  //     }
-  //   });
-  //   detectObject(_image);
-  // }
+
   getImageFromGallery() async {
     PickedFile pickedFile = await ImagePicker().getImage(
       source: ImageSource.gallery,
@@ -466,13 +244,3 @@ String rgbtoname(int R,int G,int B){
   }
   return cname;
 }
-
-//   def getColorName(R,G,B):
-//     minimum = 10000
-//     for i in range(len(csv)):
-//         d = abs(R- int(csv.loc[i,"R"])) + abs(G- int(csv.loc[i,"G"]))+ abs(B- int(csv.loc[i,"B"]))
-//         if(d<=minimum):
-//             minimum = d
-//             cname = csv.loc[i,"color_name"]
-//     return cname
-// This is in python. To be converted to dart

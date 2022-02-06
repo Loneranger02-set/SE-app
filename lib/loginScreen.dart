@@ -2,8 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'ProfilePage.dart';
 import 'SignUpScreen.dart';
-// import 'package:bat_roost/constants/base_constants.dart';
-// import 'package:bat_roost/constants/routing_constants.dart';
 import 'AuthFunctions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -296,7 +294,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 20),
                       buildPassword(),
                       buildForgotPassBtn(),
-                      buildRememberCb(),
+                     // buildRememberCb(),
                       buildLoginBtn(),
                       buildSignUpBtn(),
                     ],
@@ -409,24 +407,6 @@ printText()
 {
   print("A button is pressed");
 }
-
-// _launchURLBrowser() async {
-//   const url = HOST_COMPLETE + '/forgot_password/';
-//   if (await canLaunch(url)) {
-//     await launch(url);
-//   } else {
-//     throw 'Could not launch $url';
-//   }
-// }
-//
-// _launchURLApp() async {
-//   const url = HOST_COMPLETE + '/forgot_password/';
-//   if (await canLaunch(url)) {
-//     await launch(url, forceSafariVC: true, forceWebView: true);
-//   } else {
-//     throw 'Could not launch $url';
-//   }
-// }
 
 SnackBar buildErrorSnackBtn(String str){
   return SnackBar(
