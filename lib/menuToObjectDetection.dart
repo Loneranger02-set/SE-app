@@ -40,7 +40,7 @@ class _MenuScreenState extends State<MenuScreenToObjDetec>{
         child: Text(
           'Use an image from gallery',
           style: TextStyle(
-              color: Color(0xddff0000),
+              color: Color.fromRGBO(143, 148, 255, 1),
               fontWeight: FontWeight.bold,
               fontSize: 18
           ),
@@ -71,7 +71,7 @@ class _MenuScreenState extends State<MenuScreenToObjDetec>{
         child: Text(
           'Live detection',
           style: TextStyle(
-              color: Color(0xddff0000),
+              color: Color.fromRGBO(143, 148, 255, 1),
               fontWeight: FontWeight.bold,
               fontSize: 18
           ),
@@ -85,9 +85,9 @@ class _MenuScreenState extends State<MenuScreenToObjDetec>{
   Widget build(BuildContext context){
     return Scaffold(
       appBar:AppBar(
-        title: Text('Home'),
+        //title: Text('Home',style: TextStyle(fontWeight: FontWeight.bold),),
         //automaticallyImplyLeading: false,
-        backgroundColor: Colors.red,
+        backgroundColor: Color.fromRGBO(143, 148, 255, 1),
       ) ,
 
       body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -103,14 +103,9 @@ class _MenuScreenState extends State<MenuScreenToObjDetec>{
                           begin: Alignment.topCenter,
                           end:Alignment.bottomCenter,
                           colors: [
-                            Color(0x44ff0000),
-                            Color(0x66ff0000),
-                            Color(0x99ff0000),
-                            Color(0xccff0000),
-                            // Color(0xe0d98f7d),
-                            // Color(0xe5db6363),
-                            // Color(0xe7cb4747),
-                            // Color(0xffd92b2b),
+                            Color.fromRGBO(143, 148, 251, .4),
+                            Color.fromRGBO(143, 148, 251, .6),
+                            Color.fromRGBO(143, 148, 251, 0.8),
                           ]
                       )
                   ),

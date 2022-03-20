@@ -35,12 +35,11 @@ class _currencyState extends State<currency> {
         title: const Text(
             'Currency Recognition',
             style: TextStyle(
-              fontFamily: 'nerko',
-              fontSize: 30,
-              color: Colors.red,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Color.fromRGBO(143, 148, 255, 1),
       ),
       body: _loading
           ? Container(
@@ -48,7 +47,7 @@ class _currencyState extends State<currency> {
         child: CircularProgressIndicator(),
       )
           : Container(
-        color: Colors.black,
+        color: Colors.white,
         width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,16 +59,15 @@ class _currencyState extends State<currency> {
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
-                  color: Colors.black,
+                  color: Colors.white,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'Click anywhere to open the Camera',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Color.fromRGBO(143, 148, 255, 1),
                           fontSize: 30,
-                          fontFamily: 'nerko'
                         ),
                       ),
                     ],
@@ -88,8 +86,7 @@ class _currencyState extends State<currency> {
                   Text(
                     "You got ${_outputs[0]["label"].toString().substring(2)} rupees",
                     style: TextStyle(
-                      color: Colors.red,
-                      fontFamily: 'nerko',
+                      color: Color.fromRGBO(143, 148, 255, 1),
                       fontSize: 25,
                     ),
                   ),

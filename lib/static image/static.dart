@@ -143,12 +143,8 @@ class _StaticImageState extends State<StaticImage> {
         Container(
             child:Image.file(_image)
         ),
-
       ),
-
     );
-
-
 
     List<Widget> temp=[];
     temp=renderBoxes(size);
@@ -169,8 +165,8 @@ class _StaticImageState extends State<StaticImage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Object Detector"),
-        backgroundColor: Colors.red,
+        title: Text("Object Detector",style: TextStyle(fontWeight: FontWeight.bold),),
+        backgroundColor: Color.fromRGBO(143, 148, 255, 1),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -192,14 +188,14 @@ class _StaticImageState extends State<StaticImage> {
             heroTag: "Fltbtn2",
             child: Icon(Icons.camera_alt),
             onPressed: getImageFromCamera,
-            backgroundColor: Colors.red,
+            backgroundColor: Color.fromRGBO(143, 148, 255, 1),
           ),
           SizedBox(width: 10,),
           FloatingActionButton(
             heroTag: "Fltbtn1",
             child: Icon(Icons.photo),
             onPressed: getImageFromGallery,
-            backgroundColor: Colors.red,
+            backgroundColor: Color.fromRGBO(143, 148, 255, 1),
           ),
 
 

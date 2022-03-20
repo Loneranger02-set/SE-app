@@ -47,8 +47,8 @@ class _LiveFeedState extends State<LiveFeed> {
     Size screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Real Time Object Detection"),
-        backgroundColor: Colors.red,
+        title: Text("Real Time Object Detection",style: TextStyle(fontWeight: FontWeight.bold),),
+        backgroundColor: Color.fromRGBO(143, 148, 255, 1),
       ),
       body: Stack(
         children: <Widget>[

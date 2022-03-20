@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-
+import 'FadeAnimation.dart';
 import 'loginScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -192,15 +192,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
         style: ElevatedButton.styleFrom(
           elevation: 5,
           onPrimary: Colors.black12,
-          primary: Colors.white,
-          padding: EdgeInsets.all(15),
+          primary: Color.fromRGBO(143, 148, 251, 1),
+          padding: EdgeInsets.all(20),
           shape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         ),
         child: Text(
           'SIGN UP',
           style: TextStyle(
-              color: Color(0xddff0000),
+              color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 18),
         ),
@@ -216,13 +216,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
           TextSpan(
               text: 'Already have an Account? ',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Color.fromRGBO(143, 148, 251, 1),
                   fontSize: 18,
                   fontWeight: FontWeight.w500)),
           TextSpan(
               text: 'Login',
               style: TextStyle(
-                  color: Colors.white,
+                  color: Color.fromRGBO(143, 148, 251, 1),
                   fontSize: 18,
                   fontWeight: FontWeight.bold))
         ]),
@@ -239,16 +239,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Container(
               height: double.infinity,
               width: double.infinity,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0x44ff0000),
-                        Color(0x66ff0000),
-                        Color(0x99ff0000),
-                        Color(0xccff0000),
-                      ])),
+              // decoration: BoxDecoration(
+              //     gradient: LinearGradient(
+              //         begin: Alignment.topCenter,
+              //         end: Alignment.bottomCenter,
+              //         colors: [
+              //           Color(0x44ff0000),
+              //           Color(0x66ff0000),
+              //           Color(0x99ff0000),
+              //           Color(0xccff0000),
+              //         ])),
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 65),
@@ -257,12 +257,63 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text(
-                        'Sign up',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold),
+                      Container(
+                        height: 400,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/background.png'),
+                                fit: BoxFit.fill
+                            )
+                        ),
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned(
+                              left: 30,
+                              width: 80,
+                              height: 200,
+                              child: FadeAnimation(1, Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage('assets/images/light-1.png')
+                                    )
+                                ),
+                              )),
+                            ),
+                            Positioned(
+                              left: 140,
+                              width: 80,
+                              height: 150,
+                              child: FadeAnimation(1.3, Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage('assets/images/light-2.png')
+                                    )
+                                ),
+                              )),
+                            ),
+                            Positioned(
+                              right: 40,
+                              top: 40,
+                              width: 80,
+                              height: 150,
+                              child: FadeAnimation(1.5, Container(
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage('assets/images/clock.png')
+                                    )
+                                ),
+                              )),
+                            ),
+                            Positioned(
+                              child: FadeAnimation(1.6, Container(
+                                margin: EdgeInsets.only(top: 50),
+                                child: Center(
+                                  child: Text("Sign up", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),),
+                                ),
+                              )),
+                            )
+                          ],
+                        ),
                       ),
                       SizedBox(height: 30),
                       // buildFirstName(),
