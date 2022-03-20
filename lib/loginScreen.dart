@@ -485,7 +485,7 @@ class ProgressHUD extends StatelessWidget{
     @required this.child,
     @required this.inAsyncCall,
     this.opacity=0.0,
-    this.color=Colors.greenAccent,
+    this.color=Colors.white,
     this.valueColor,
   }):super(key: key);
   @override
@@ -497,7 +497,7 @@ class ProgressHUD extends StatelessWidget{
         children: [
           new Opacity(opacity: opacity,child:ModalBarrier(dismissible:false,color:color),),
           new Center(
-              child: new CircularProgressIndicator(color: Colors.teal,)
+              child: new CircularProgressIndicator(color: Color.fromRGBO(143, 148, 255, 1),)
           ),
         ],
       );
