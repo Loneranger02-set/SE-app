@@ -27,20 +27,26 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: Text('VISION',textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 20,
-              color:Colors.black
-          )),
-        decoration: BoxDecoration(
-
-          color: Colors.white,
-
+      child: Column(
+        //crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(height: 475,),
+          Text('VISION',//textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20,
+                color:Colors.black,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.none
+                //height: 100,
+              )
+          ),
+        ],
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
         image: DecorationImage(
-        image: AssetImage(
-        'assets/images/download.jpg'),
-
-    ),
+          image: AssetImage('assets/images/download.jpg'),
+        ),
     ),);
   }
 }
