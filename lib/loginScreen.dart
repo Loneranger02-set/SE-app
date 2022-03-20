@@ -51,13 +51,15 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget buildEmail() {
-    return Column(
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
           'Email',
           style: TextStyle(
-              color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+              color: Color.fromRGBO(143, 148, 251, 1), fontSize: 16, fontWeight: FontWeight.bold),
         ),
         SizedBox(height: 10),
         Container(
@@ -85,105 +87,66 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         )
       ],
+     ),
     );
   }
 
   Widget buildPassword() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Password',
-
-          style: TextStyle(
-              color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-        ),
-        SizedBox(height: 10),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-              ]),
-          height: 60,
-          child: TextFormField(
-            keyboardType: TextInputType.visiblePassword,
-            key: Key('pwdField'),
-            obscureText: hidePassword,
-            onSaved: (input) => loginRequestModel.password = input,
-            //validator: (input)=>input.length<8?"Password should be more than 8 characters":null,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(Icons.lock, color: Colors.black26),
-              hintText: 'Password',
-              hintStyle: TextStyle(color: Colors.black38),
-              suffixIcon: IconButton(
-                icon: Icon(
-                    hidePassword ? Icons.visibility_off : Icons.visibility),
-                color: Colors.black26,
-                onPressed: () {
-                  setState(() {
-                    hidePassword = !hidePassword;
-                  });
-                },
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 25),
+        child :Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'Password',
+              style: TextStyle(
+                  color: Color.fromRGBO(143, 148, 251, 1), fontSize: 16, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Container(
+              alignment: Alignment.centerLeft,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+                  ]),
+              height: 60,
+              child: TextFormField(
+                keyboardType: TextInputType.visiblePassword,
+                key: Key('pwdField'),
+                obscureText: hidePassword,
+                onSaved: (input) => loginRequestModel.password = input,
+                //validator: (input)=>input.length<8?"Password should be more than 8 characters":null,
+                style: TextStyle(color: Colors.black),
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(top: 14),
+                  prefixIcon: Icon(Icons.lock, color: Colors.black26),
+                  hintText: 'Password',
+                  hintStyle: TextStyle(color: Colors.black38),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        hidePassword ? Icons.visibility_off : Icons.visibility),
+                    color: Colors.black26,
+                    onPressed: () {
+                      setState(() {
+                        hidePassword = !hidePassword;
+                      });
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
+            )
+          ],
         )
-      ],
-    );
-  }
-
-  Widget buildForgotPassBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-        onPressed: printText(),//_launchURLBrowser,
-        //padding: EdgeInsets.only(right: 0),
-        child: Text(
-          '',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-
-  Widget buildRememberCb() {
-    return Container(
-      height: 20,
-      child: Row(
-        children: <Widget>[
-          Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
-            child: Checkbox(
-              value: isRememberMe,
-              checkColor: Colors.green,
-              activeColor: Colors.white,
-              onChanged: (value) {
-                setState(() {
-                  isRememberMe = value;
-                  setRem(value);
-                });
-              },
-            ),
-          ),
-          Text(
-            'Remember me',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          )
-        ],
-      ),
     );
   }
 
   Widget buildLoginBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: EdgeInsets.symmetric(horizontal: 25,vertical: 25),
       width: double.infinity,
       child: ElevatedButton(
         key:Key("LoginButton"),
@@ -278,7 +241,7 @@ class _LoginScreenState extends State<LoginScreen> {
               //         ])),
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
+                //padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                 child: Form(
                   key: globalFormKey,
                   child: Column(
@@ -347,10 +310,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       buildEmail(),
                       SizedBox(height: 20),
                       buildPassword(),
-                      buildForgotPassBtn(),
-                      // buildRememberCb(),
+                      SizedBox(height: 20,),
                       buildLoginBtn(),
                       buildSignUpBtn(),
+                      SizedBox(height: 250)
                     ],
                   ),
                 ),

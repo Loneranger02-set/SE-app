@@ -38,128 +38,137 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget buildEmail() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 10),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-              ]),
-          height: 50,
-          child: TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            key:Key("emailReg"),
-            onSaved: (input) => signupRequestModel.email = input,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(top: 14),
-                prefixIcon: Icon(Icons.email, color: Colors.black26),
-                hintText: 'Email',
-                hintStyle: TextStyle(color: Colors.black38)),
-          ),
-        )
-      ],
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(height: 10),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+                ]),
+            height: 50,
+            child: TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              key:Key("emailReg"),
+              onSaved: (input) => signupRequestModel.email = input,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  contentPadding: EdgeInsets.only(top: 14),
+                  prefixIcon: Icon(Icons.email, color: Colors.black26),
+                  hintText: 'Email',
+                  hintStyle: TextStyle(color: Colors.black38)),
+            ),
+          )
+        ],
+      ),
     );
   }
 
   Widget buildPassword() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 10),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-              ]),
-          height: 50,
-          child: TextFormField(
-            keyboardType: TextInputType.visiblePassword,
-            key:Key("pwd1Reg"),
-            obscureText: hidePassword1,
-            onSaved: (input) => signupRequestModel.password1 = input,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(Icons.lock, color: Colors.black26),
-              hintText: 'Password',
-              hintStyle: TextStyle(color: Colors.black38),
-              suffixIcon: IconButton(
-                icon: Icon(
-                    hidePassword1 ? Icons.visibility_off : Icons.visibility),
-                color: Colors.black26,
-                onPressed: () {
-                  setState(() {
-                    hidePassword1 = !hidePassword1;
-                  });
-                },
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(height: 10),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+                ]),
+            height: 50,
+            child: TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              key:Key("pwd1Reg"),
+              obscureText: hidePassword1,
+              onSaved: (input) => signupRequestModel.password1 = input,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(Icons.lock, color: Colors.black26),
+                hintText: 'Password',
+                hintStyle: TextStyle(color: Colors.black38),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      hidePassword1 ? Icons.visibility_off : Icons.visibility),
+                  color: Colors.black26,
+                  onPressed: () {
+                    setState(() {
+                      hidePassword1 = !hidePassword1;
+                    });
+                  },
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 
   Widget buildConfirmPassword() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        SizedBox(height: 10),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
-              ]),
-          height: 50,
-          child: TextFormField(
-            keyboardType: TextInputType.visiblePassword,
-            key:Key("pwd2Reg"),
-            obscureText: hidePassword2,
-            onSaved: (input) => signupRequestModel.password2 = input,
-            style: TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14),
-              prefixIcon: Icon(Icons.lock, color: Colors.black26),
-              hintText: 'Confirm Password',
-              hintStyle: TextStyle(color: Colors.black38),
-              suffixIcon: IconButton(
-                icon: Icon(
-                    hidePassword2 ? Icons.visibility_off : Icons.visibility),
-                color: Colors.black26,
-                onPressed: () {
-                  setState(() {
-                    hidePassword2 = !hidePassword2;
-                  });
-                },
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(height: 10),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+                ]),
+            height: 50,
+            child: TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              key:Key("pwd2Reg"),
+              obscureText: hidePassword2,
+              onSaved: (input) => signupRequestModel.password2 = input,
+              style: TextStyle(color: Colors.black),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(Icons.lock, color: Colors.black26),
+                hintText: 'Confirm Password',
+                hintStyle: TextStyle(color: Colors.black38),
+                suffixIcon: IconButton(
+                  icon: Icon(
+                      hidePassword2 ? Icons.visibility_off : Icons.visibility),
+                  color: Colors.black26,
+                  onPressed: () {
+                    setState(() {
+                      hidePassword2 = !hidePassword2;
+                    });
+                  },
+                ),
               ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 
   Widget buildSignUpBtn() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: EdgeInsets.symmetric(horizontal: 25,vertical: 25),
       width: double.infinity,
       key:Key("signupReg"),
       child: ElevatedButton(
@@ -251,7 +260,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               //         ])),
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 65),
+                //padding: EdgeInsets.symmetric(horizontal: 25, vertical: 65),
                 child: Form(
                   key: globalFormKey,
                   child: Column(
@@ -326,6 +335,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       // buildLocality(),
                       buildSignUpBtn(),
                       buildLoginBtn(),
+                      SizedBox(height: 250,)
                     ],
                   ),
                 ),
