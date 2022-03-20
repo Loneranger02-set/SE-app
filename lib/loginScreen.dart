@@ -11,6 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'FadeAnimation.dart';
 
 
 Future<void> setRem(bool value) async {
@@ -265,24 +266,125 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               height: double.infinity,
               width: double.infinity,
+              // decoration: BoxDecoration(
+                  //gradient: LinearGradient(
+                      // begin: Alignment.topCenter,
+                      // end: Alignment.bottomCenter,
+                      // colors: [
+                      //   Color(0x44ff0000),
+                      //   Color(0x66ff0000),
+                      //   Color(0x99ff0000),
+                      //   Color(0xccff0000),
+                      // ])
+
               decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Color(0x44ff0000),
-                        Color(0x66ff0000),
-                        Color(0x99ff0000),
-                        Color(0xccff0000),
-                      ])),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/background.png'),
+                      fit: BoxFit.fill
+                  )
+              ),
+              // child: Stack(
+              //   children: <Widget>[
+              //     Positioned(
+              //       left: 30,
+              //       width: 80,
+              //       height: 300,
+              //       child: FadeAnimation(1, Container(
+              //         decoration: BoxDecoration(
+              //             image: DecorationImage(
+              //                 image: AssetImage('assets/images/light-1.png')
+              //             )
+              //         ),
+              //       )),
+              //     ),
+              //     Positioned(
+              //       left: 140,
+              //       width: 80,
+              //       height: 300,
+              //       child: FadeAnimation(1.3, Container(
+              //         decoration: BoxDecoration(
+              //             image: DecorationImage(
+              //                 image: AssetImage('assets/images/light-2.png')
+              //             )
+              //         ),
+              //       )),
+              //     ),
+              //     Positioned(
+              //       right: 40,
+              //       top: 40,
+              //       width: 80,
+              //       height: 250,
+              //       child: FadeAnimation(1.5, Container(
+              //         decoration: BoxDecoration(
+              //             image: DecorationImage(
+              //                 image: AssetImage('assets/images/clock.png')
+              //             )
+              //         ),
+              //       )),
+              //     ),],),
+
               child: SingleChildScrollView(
                 physics: AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 120),
-                child: Form(
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                    Container(
+                    height: 600,
+
+
+                child:Form(
                   key: globalFormKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                    // Container(
+                    // height: 400,
+                    // decoration: BoxDecoration(
+                    //     image: DecorationImage(
+                    //         image: AssetImage('assets/images/background.png'),
+                    //         fit: BoxFit.fill
+                    //     )
+                    // ),
+                    // child: Stack(
+                    //   children: <Widget>[
+                    //     Positioned(
+                    //       left: 30,
+                    //       width: 80,
+                    //       height: 300,
+                    //       child: FadeAnimation(1, Container(
+                    //         decoration: BoxDecoration(
+                    //             image: DecorationImage(
+                    //                 image: AssetImage('assets/images/light-1.png')
+                    //             )
+                    //         ),
+                    //       )),
+                    //     ),
+                    //     Positioned(
+                    //       left: 140,
+                    //       width: 80,
+                    //       height: 300,
+                    //       child: FadeAnimation(1.3, Container(
+                    //         decoration: BoxDecoration(
+                    //             image: DecorationImage(
+                    //                 image: AssetImage('assets/images/light-2.png')
+                    //             )
+                    //         ),
+                    //       )),
+                    //     ),
+                    //     Positioned(
+                    //       right: 40,
+                    //       top: 40,
+                    //       width: 80,
+                    //       height: 250,
+                    //       child: FadeAnimation(1.5, Container(
+                    //         decoration: BoxDecoration(
+                    //             image: DecorationImage(
+                    //                 image: AssetImage('assets/images/clock.png')
+                    //             )
+                    //         ),
+                    //       )),
+                    //     ),],),),
                       Text(
                         'Sign In',
                         style: TextStyle(
@@ -302,11 +404,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-            )
           ]),
         ),
       ),
-    );
+    ),],),),),);
   }
 
   bool validateAndSave() {

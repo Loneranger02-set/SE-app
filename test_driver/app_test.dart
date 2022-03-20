@@ -147,7 +147,7 @@ void main() {
       print("Email found");
       await driver.tap(emailField);  // acquire focus
       print("tapped email");
-      await driver.enterText("test103@gmail.com");  // enter text
+      await driver.enterText("test104@gmail.com");  // enter text
 
       var pwd1Field = find.byValueKey('pwd1Reg');
       print("Password 1 found");
@@ -259,7 +259,7 @@ void main() {
       print("Email found");
       await driver.tap(emailField);  // acquire focus
       print("tapped");
-      await driver.enterText("test103@gmail.com");  // enter text
+      await driver.enterText("test104@gmail.com");  // enter text
 
       var pwdField = find.byValueKey('pwdField');
       print("Password found");

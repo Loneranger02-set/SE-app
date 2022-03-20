@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'menuToObjectDetection.dart';
+import 'currency.dart';
 import 'colorRec.dart';
 import 'newcolorrec.dart';
 class MenuScreen extends StatefulWidget{
@@ -93,6 +94,33 @@ class _MenuScreenState extends State<MenuScreen>{
       ),
     );
   }
+  Widget buildCurrencyDetectionBtn(){
+    final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
+      elevation: 5,
+      padding: EdgeInsets.all(15),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(100)
+      ),
+      primary: Colors.white,
+      onPrimary: Colors.black12,
+    );
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 5),
+      width: double.infinity,
+      child: ElevatedButton(
+        style: raisedButtonStyle,
+        onPressed:()=> Navigator.push(context,new MaterialPageRoute(builder: (context)=>new currency())),
+        child: Text(
+          'Currency recognition',
+          style: TextStyle(
+              color: Color(0xddff0000),
+              fontWeight: FontWeight.bold,
+              fontSize: 18
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context){
@@ -140,7 +168,9 @@ class _MenuScreenState extends State<MenuScreen>{
                         SizedBox(height: 30),
                         buildDetectColorBtn(),
                         SizedBox(height: 30),
-                        buildObjectDetectionBtn()
+                        buildObjectDetectionBtn(),
+                        SizedBox(height: 30),
+                        buildCurrencyDetectionBtn()
                       ],
                     ),
                   ),
