@@ -81,16 +81,16 @@ class _currencyState extends State<currency> {
               onTap: ()=>  Navigator.push(context,new MaterialPageRoute(builder: (context)=>new currency())),
               child: Column(
                 children: [
-                  //Image.file(_image),
+                  Image.file(_image,height:600),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Text(
                     "You got ${_outputs[0]["label"].toString().substring(2)} rupees",
                     style: TextStyle(
                       color: Colors.red,
                       fontFamily: 'nerko',
-                      fontSize: 30,
+                      fontSize: 25,
                     ),
                   ),
                 ],

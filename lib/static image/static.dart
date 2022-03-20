@@ -77,6 +77,7 @@ class _StaticImageState extends State<StaticImage> {
     obj=".....";
     for(int i=0;i<_recognitions.length;i++)
     {
+      print(_recognitions[i]["detectedClass"]+ "- "+_recognitions[i]['confidenceInClass'].toString());
       if(_recognitions[i]['confidenceInClass']>m)
       {
         m=_recognitions[i]['confidenceInClass'];
