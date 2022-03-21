@@ -16,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 20),
+    Timer(Duration(seconds: 4),
             ()=>Navigator.pushReplacement(context,
             MaterialPageRoute(builder:
                 (context) =>
@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Column(
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 475,),
+          SizedBox(height: 550,),
           GradientText('VISION',//textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 20,

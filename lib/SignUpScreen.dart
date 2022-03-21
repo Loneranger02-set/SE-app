@@ -33,7 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: signupuiSetup(context),
       inAsyncCall: isApiCallProcess,
       opacity: 1,
-      color: Color.fromRGBO(163, 219, 191, 1),
+      color: Colors.white,
     );
   }
 
